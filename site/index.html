@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WasmPatcher</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ── Toolbar ─────────────────────────────────────────────────────────── -->
+  <div id="toolbar">
+    <div class="logo">Wasm<span>·</span>Patcher</div>
+    <div class="separator"></div>
+    <button class="tb-btn primary" id="btn-start">▶ Start Audio</button>
+    <button class="tb-btn" id="btn-clear">✕ Clear</button>
+    <div class="separator"></div>
+    <div class="gain-group">
+      <span>Gain</span>
+      <input type="range" id="gain-slider" min="0" max="1" step="0.01" value="0.7">
+      <span id="gain-display">70%</span>
+    </div>
+    <div id="status">● Stopped</div>
+  </div>
+
+  <!-- ── Patcher canvas ─────────────────────────────────────────────────── -->
+  <div id="canvas-wrap">
+    <canvas id="patcher-canvas"></canvas>
+
+    <div id="shortcuts">
+      Right-click → Add node&nbsp;&nbsp;
+      Drag outlet→inlet → Connect&nbsp;&nbsp;
+      Double-click cable → Delete&nbsp;&nbsp;
+      Delete key → Remove node&nbsp;&nbsp;
+      Scroll / Drag background → Pan
+    </div>
+  </div>
+
+</div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

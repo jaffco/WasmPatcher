@@ -1,0 +1,168 @@
+/* ── Reset & base ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #0e0e1a;
+  --surface: #14142000;
+  --border:  #2a2a42;
+  --text:    #c8d8f0;
+  --dim:     #5a6a8a;
+  --accent:  #00d4ff;
+  --ok:      #38ffd0;
+  --warn:    #ff6b6b;
+  font-family: "SF Mono", "Fira Code", "Source Code Pro", monospace;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ── Layout ────────────────────────────────────────────────────────────────── */
+#app {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* ── Toolbar ────────────────────────────────────────────────────────────────── */
+#toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 14px;
+  background: #0a0a14;
+  border-bottom: 1px solid var(--border);
+  height: 44px;
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+#toolbar .logo {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  opacity: 0.9;
+  text-transform: uppercase;
+}
+
+#toolbar .logo span {
+  color: #ffd166;
+}
+
+.separator {
+  width: 1px;
+  height: 22px;
+  background: var(--border);
+}
+
+/* Toolbar buttons */
+.tb-btn {
+  background: #1a1a2e;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.04em;
+}
+
+.tb-btn:hover:not(:disabled) {
+  background: #252540;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tb-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.tb-btn.primary {
+  background: #0c2040;
+  border-color: #1a5080;
+  color: var(--ok);
+}
+.tb-btn.primary:hover:not(:disabled) {
+  background: #0d2c52;
+  border-color: var(--ok);
+}
+
+/* Gain control */
+.gain-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--dim);
+}
+
+#gain-slider {
+  -webkit-appearance: none;
+  width: 80px;
+  height: 4px;
+  background: #1e2840;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+#gain-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+
+#gain-display {
+  color: var(--text);
+  min-width: 36px;
+  font-size: 11px;
+}
+
+/* Status pill */
+#status {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--dim);
+  letter-spacing: 0.04em;
+}
+
+.status-ok  { color: var(--ok)  !important; }
+.status-err { color: var(--warn) !important; }
+
+/* ── Canvas area ────────────────────────────────────────────────────────────── */
+#canvas-wrap {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+#patcher-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+}
+
+/* ── Keyboard shortcut overlay ──────────────────────────────────────────────── */
+#shortcuts {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  font-size: 10px;
+  color: #2a3a5a;
+  line-height: 1.8;
+  pointer-events: none;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
